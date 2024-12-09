@@ -4,9 +4,9 @@ metadata:
   name: {{ .Release.Name }}-service
 spec:
   selector:
-    app: {{ .Values.global.name | .Release.Name }}
+    app: {{ .Values.global.name | default .Release.Name }}
   type: {{ .Values.global.service.type | default .Values.service.type }}
   ports:
     - protocol: TCP
-      port: {{ .Values.global.service.port | .Values.service.port }}
+      port: {{ .Values.global.service.port | default .Values.service.port }}
       targetPort: {{ .Values.global.service.port | default .Values.service.port }}
