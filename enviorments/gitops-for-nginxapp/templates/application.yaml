@@ -10,13 +10,14 @@ spec:
   sources:
   - repoURL: {{ .Values.global.repoURL }}
     targetRevision: {{ .Values.global.targetRevision }}
-    path: nginx-app 
+    path: gitops-for-nginxapp
+    ref: values
   - repoURL: {{ .Values.global.repoURL }}
     targetRevision: {{ .Values.global.targetRevision }}
-    path: gitops-for-nginxapp
+    path: nginx-app 
     helm:
       valueFiles: 
-        - $values/enviorments/{{ .Values.global.enviorments }}values.yaml
+        - $values/enviorments/{{ .Values.global.enviorments }}/values.yaml
   destination: 
     server: {{ .Values.global.destination.server }}
     namespace: {{ .Values.global.destination.namespace }}
