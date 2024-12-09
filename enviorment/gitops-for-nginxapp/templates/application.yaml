@@ -1,0 +1,29 @@
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  name: {{ .Values.global.name }}
+  namespace: argocd
+
+spec:
+  project: default
+
+  sources:
+  - repoURL: {{ .Values.global.repoURL }}
+    targetRevision: {{ .Values.global.targetRevision }}
+    path: /nginx-app 
+  - repoURL: {{ .Values.global.repoURL }}
+    targetRevision: {{ .Values.global.targetRevision }}
+    path: /gitops-for-nginxapp
+    helm:
+      valueFiles: 
+      - $values/enviorments/{{ .Values.global.environment }}values.yaml
+  destination:
+    server: {{ .Values.global.destination.server }}
+    namespace: {{ .Values.global.destination.namespace }}
+
+  syncPolicy:
+    automated:
+      prune: true
+      selfHeal: true
+    SyncOptions:
+    - CreateNamespace=true

@@ -1,0 +1,16 @@
+global:
+  enviorments: gitops-for-nginxapp
+  name: nginx-app
+
+  replicaCount: 3
+  service:
+    type: NodePort
+    port: 80
+
+  destination:
+    server: https://kubernetes.default.svc
+    namespace: default
+
+  repoURL: https://github.com/EITANPOD/gitOps-nginxapp-chart.git
+  targetRevision: HEAD
+    

@@ -1,0 +1,22 @@
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  name: seed-app
+  namespace: argocd
+
+spec:
+  project: default
+  sources:
+  - repoURL: https://github.com/EITANPOD/gitOps-nginxapp-chart.git
+    targetRevision: HEAD
+    path: /enviorment/gitOps-nginxapp-chart 
+  destination:
+    server: https://kubernetes.default.svc
+    namespace: my-project
+
+  syncPolicy:
+    automated:
+      prune: true
+      selfHeal: true
+    syncOptions:
+    - CreateNamespace=true

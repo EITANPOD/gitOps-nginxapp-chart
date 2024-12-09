@@ -1,0 +1,19 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: nginx-deployment
+  labels:
+    app: {{ .Values.global.name | default .Release.Name }}
+spec:
+  replicas: {{ .Values.global.replicaCount | default .Values.replicaCount }}
+  selector:
+    matchLabels:
+      app: {{ .Values.global.name | default .Release.Name }}
+  template:
+    metadata:
+      labels:
+        app: {{ .Values.global.name | default .Release.Name }}
+    spec:
+      containers:
+      - name: {{ .Values.global.name }}-container
+        image: {{ .Values.image.repository }}:{{ .Values.image.tag }}
