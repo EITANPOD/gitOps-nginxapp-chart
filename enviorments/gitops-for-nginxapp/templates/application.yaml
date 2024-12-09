@@ -16,8 +16,8 @@ spec:
     path: /gitops-for-nginxapp
     helm:
       valueFiles: 
-      - $values/enviorments/{{ .Values.global.environment }}values.yaml
-  destination:
+        - $values/enviorments/{{ .Values.global.enviorments }}values.yaml
+  destination: 
     server: {{ .Values.global.destination.server }}
     namespace: {{ .Values.global.destination.namespace }}
 
