@@ -10,10 +10,10 @@ spec:
   sources:
   - repoURL: {{ .Values.global.repoURL }}
     targetRevision: {{ .Values.global.targetRevision }}
-    path: /nginx-app 
+    path: nginx-app 
   - repoURL: {{ .Values.global.repoURL }}
     targetRevision: {{ .Values.global.targetRevision }}
-    path: /gitops-for-nginxapp
+    path: gitops-for-nginxapp
     helm:
       valueFiles: 
         - $values/enviorments/{{ .Values.global.enviorments }}values.yaml
