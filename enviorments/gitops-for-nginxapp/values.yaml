@@ -2,6 +2,9 @@ global:
   enviorments: gitops-for-nginxapp
   name: nginx-app
 
+  image:
+    repository: nginx
+
   replicaCount: 3
   service:
     type: NodePort
