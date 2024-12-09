@@ -10,7 +10,7 @@ spec:
   sources:
   - repoURL: {{ .Values.global.repoURL }}
     targetRevision: {{ .Values.global.targetRevision }}
-    path: gitops-for-nginxapp
+    path: enviorments/gitops-for-nginxapp
     ref: values
   - repoURL: {{ .Values.global.repoURL }}
     targetRevision: {{ .Values.global.targetRevision }}
