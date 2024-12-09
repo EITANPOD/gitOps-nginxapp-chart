@@ -1,7 +1,7 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: nginx-deployment
+  name: {{ .Release.Name }}-deployment
   labels:
     app: {{ .Values.global.name | default .Release.Name }}
 spec:
@@ -16,4 +16,4 @@ spec:
     spec:
       containers:
       - name: {{ .Values.global.name }}-container
-        image: {{ .Values.image.repository }}:{{ .Values.image.tag }}
+        image: {{ .Values.global.image.repository | default .Values.image.repository }}
