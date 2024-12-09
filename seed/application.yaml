@@ -9,7 +9,7 @@ spec:
   sources:
   - repoURL: https://github.com/EITANPOD/gitOps-nginxapp-chart.git
     targetRevision: HEAD
-    path: /enviorment/gitOps-nginxapp-chart 
+    path: enviorments/gitops-for-nginxapp
   destination:
     server: https://kubernetes.default.svc
     namespace: my-project
