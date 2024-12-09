@@ -9,7 +9,7 @@ global:
 
   destination:
     server: https://kubernetes.default.svc
-    namespace: default
+    namespace: my-project
 
   repoURL: https://github.com/EITANPOD/gitOps-nginxapp-chart.git
   targetRevision: HEAD
